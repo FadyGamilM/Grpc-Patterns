@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService";
+
+package streamdemo;
+
+service Streamdemo{
+   // the server receives one message request 
+   // the server returns stream of messages responses
+   rpc ServerStreamingAPI(test1) returns (stream test1);
+
+   // the server will receive a stream of messages 
+   // then server will return one single message
+   rpc ClientStreamingAPI(stream test1) returns (test1);
+}
+
+message test1 {
+   string msg = 1;
+}
+
